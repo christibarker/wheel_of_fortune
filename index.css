@@ -24,7 +24,7 @@
 	height:200px;
 	width: 600px;
 	text-align: center;
-	/*border: solid;*/
+	border: solid;
 }
 
 .col-8 {
@@ -41,3 +41,5 @@
 	height:150px;
 	width: 150px;
 }
+
+.letters { display: inline;}
