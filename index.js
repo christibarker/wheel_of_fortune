@@ -1,4 +1,4 @@
-const phraseArray = ['happy'];
+const phraseArray = ['quixotic'];
 
 
 class Game {
