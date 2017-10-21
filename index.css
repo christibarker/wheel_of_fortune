@@ -24,7 +24,7 @@
 	height:200px;
 	width: 600px;
 	text-align: center;
-	border: solid;
+/*	border: solid;*/
 }
 
 .col-8 {
@@ -42,4 +42,12 @@
 	width: 150px;
 }
 
-.letters { display: inline;}
+#abc {
+	position: relative;
+    margin-top: 6%;
+}
+
+.letters { 
+	display: inline;
+	
+}
