@@ -6,6 +6,13 @@ body {
 	margin-top: 4%;
 }
 
+#player {
+	position: relative;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 11%;
+}
+
 .col {
 	height:150px;
 	width: 200px;
@@ -17,7 +24,7 @@ body {
 .col-3 {
 	height:200px;
 	width: 400px;
-	text-align: center;
+	/*text-align: center;*/
 	/*border: solid;*/
 }
 
@@ -38,7 +45,7 @@ body {
 .col-8 {
 	text-align: center;
 	/*border: solid;*/
-	margin-top: 5%;
+	/*margin-top: 3%;*/
 }
 
 .header {
@@ -54,7 +61,7 @@ body {
 
 #abc {
 	position: relative;
-    margin-top: 6%;
+    margin-top: 3%;
 }
 
 .letters { 
@@ -86,3 +93,10 @@ body {
 	text-align: center;
 	margin-left: 17%;
 }
+
+/*#button {
+	position: relative;
+	marging-top: 3%;
+}*/
+
+
