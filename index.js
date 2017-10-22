@@ -1,7 +1,8 @@
 
 $(function(){
 
-// var money = (letter * $300)
+// var addMoney = (letter * $300)
+// var subMoney = (letter - $200)
 
 //when letter is clicked the letter shows on screen or guess is counted wrong
 
@@ -29,6 +30,9 @@ $(function(){
  // 	}
  // })
 
+
+//if they win fade in 
+// <img src="img/winner.jpg" alt="">
 
 class Game {
 	constructor(){
