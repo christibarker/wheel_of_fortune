@@ -34,6 +34,9 @@ $(function(){
 //if they win fade in 
 // <img src="img/winner.jpg" alt="">
 
+
+//buy a vowel should pop up a modal with list of vowels to buy
+
 class Game {
 	constructor(){
 		this.abcArray = [];
