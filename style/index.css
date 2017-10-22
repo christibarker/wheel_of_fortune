@@ -39,6 +39,7 @@ body {
 .header {
 	height:200px;
 	width: 600px;
+	border-radius: 15px;
 }
 
 .one {
@@ -54,6 +55,7 @@ body {
 .letters { 
 	display: inline;
 	margin-right: 2%;
+	font-weight: bold;
 }
 
 .letters:hover {
@@ -63,15 +65,18 @@ body {
 .money_one {
 	height:50px;
 	width: 150px;
-	background: rgb(164, 65, 131);
-	border-radius: 15%;
+	background: rgb(175, 75, 169);
+/*	border-radius: 25%;*/
+	text-align: center;
+	margin-left: 14%;
 	
 }
 
 .money_two {
 	height:50px;
 	width: 150px;
-	background: rgb(52, 113, 187);
-	border-radius: 15%;
-	
+	background: rgb(52, 112, 221);
+	/*border-radius: 25%;*/
+	text-align: center;
+	margin-left: 17%;
 }
