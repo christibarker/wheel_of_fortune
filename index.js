@@ -1,53 +1,44 @@
-const phraseArray = ['quixotic'];
+
+$(function(){
+
+// var money = (letter * $300)
+
+//when letter is clicked the letter shows on screen or guess is counted wrong
+
+// $('.letters').on('click', function(){
+// 	var letter = $(.letters);
+	//if (lettter correct) {
+		// then diplay on screen & add money to their total
+		// $('#innerText').html('');
+	// } else {
+			// wrong guess
+			// minus that money from them
+	// }
+
+	// 	});
+
+	// });
+
+//guess whole word
+ // $(#guess).on('click', function(){
+ // 	if (answer === to guess){
+ // 		$('#win_lose').html('you won' + $500 bonus);
+ // 	} else {
+ // 		minus $200
+ 			// alert('incorrect, you lose $200')
+ // 	}
+ // })
 
 
 class Game {
+	constructor(){
+		this.abcArray = [];
+	}
 
-  constructor(phraseArr){
-
-    this.phraseArr = phraseArr;
-    this.phrase = this.phraseArr[0].split('');
-    this.correctLetters = [];
-    this.abcArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-    this.phraseLetters =  this.phrase.filter(function(elem, index, self) 
-    {
-      return index == self.indexOf(elem); 
-    }) // Eliminates duplicate letters for clue checker
-
-  } // End of constructor
-
-  checkIfWon(){
-    if (this.correctLetters.length == this.phraseLetters.length) {
-      alert('You win!');
-    }
-    else {
-      this.guessLetter();
-    }
-  } // End of checkIfWon method
-
-  displayClue(){
-
-  }
-
-  guessLetter(){
-    let letter = prompt('Guess a letter!');
-
-
-    if(this.phrase.includes(letter)){
-      if(this.correctLetters.includes(letter)){
-        alert("You've already guessed that letter!");
-        this.guessLetter();
-      }
-      else{
-      this.correctLetters.push(letter);
-      }
-    }
-
-    this.checkIfWon();
-
-  }
-
-
+//this pushes letters to the abc array when clicked
+	abcArray(){
+		this.abcArray = $('letters')
+	}
 
 
 }
@@ -59,15 +50,6 @@ class Game {
 
 
 
-$(function() { // Document ready function
-  
-  let wof = new Game(phraseArray);
-
-  wof.displayClue();
-  wof.checkIfWon();
-
-
-}); // End of Document Ready Function
 
 
 
@@ -92,18 +74,4 @@ $(function() { // Document ready function
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-};
+});

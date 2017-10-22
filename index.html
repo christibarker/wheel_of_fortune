@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style/index.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   </head>
@@ -37,7 +37,9 @@
         </div>
       </div>
         <div class="row">
-        <div class="col-2">Money Earned</div>
+         <div class="col-2">
+          <div class="money_one">$</div>
+          </div>
         <div class="col-8"><strong>Pick a letter</strong>
           <div id="abc">
             <div class="letters">A</div>
@@ -68,15 +70,17 @@
             <div class="letters">Z</div>
           </div>
         </div>
-        <div class="col-2">Money Earned</div>
+        <div class="col-2">
+          <div class="money_two">$</div>
+        </div>
       </div>
       <div class="row">
-        <div class="col-2"></div>
+        <div id="win_lose" class="col-2">win/lose</div>
         <div class="col-8">
           <button type="button" class="btn btn-warning">Buy a Vowel</button>
-          <button type="button" class="btn btn-info">Guess Word</button>
+          <button id="guess" type="button" class="btn btn-info">Guess Word</button>
         </div>
-        <div class="col-2"></div>
+        <div id="win_lose" class="col-2">win/loose</div>
       </div>
     </div>
 

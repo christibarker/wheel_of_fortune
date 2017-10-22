@@ -1,23 +1,27 @@
+body {
+	background: lightgray;
+}
+
 
 .col {
 	height:200px;
 	width: 400px;
 	text-align: center;
-	border: solid;
+/*	border: solid;*/
 };
 
 .col-3 {
 	height:200px;
 	width: 400px;
 	text-align: center;
-	border: solid;
+	/*border: solid;*/
 }
 
 .col-2 {
 	height:200px;
 	width: 200px;
 	text-align: center;
-	border: solid;
+	/*border: solid;*/
 }
 
 .col-6 {
@@ -29,7 +33,7 @@
 
 .col-8 {
 	text-align: center;
-	border: solid;
+	/*border: solid;*/
 }
 
 .header {
@@ -49,5 +53,25 @@
 
 .letters { 
 	display: inline;
+	margin-right: 2%;
+}
+
+.letters:hover {
+	box-shadow: 0 0 30px red;
+}
+
+.money_one {
+	height:50px;
+	width: 150px;
+	background: rgb(164, 65, 131);
+	border-radius: 15%;
+	
+}
+
+.money_two {
+	height:50px;
+	width: 150px;
+	background: rgb(52, 113, 187);
+	border-radius: 15%;
 	
 }
