@@ -2,12 +2,16 @@ body {
 	background-color: gray;
 }
 
+#innerText_top{
+	margin-top: 4%;
+}
 
 .col {
-	height:200px;
-	width: 400px;
+	height:150px;
+	width: 200px;
 	text-align: center;
-/*	border: solid;*/
+	background-color: lightgreen;
+	border: solid;
 };
 
 .col-3 {
