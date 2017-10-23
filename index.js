@@ -1,24 +1,36 @@
 
 $(function(){
 
+// if (Cookies.get('addMoney') === undefined) {
+// 		Cookies.set('addMoney', 0);
+// 	}
+
+// if (Cookies.get('subMoney') === undefined) {
+// 		Cookies.set('subMoney', 0);
+// 	}
+
 	var newGame = new Game();
 
+
+//click on and new word is generated, background to display word changes color
 $('#player').on('click', function(){
-	startGame();
+	alert('it works');
+	// startGame();
 })
 
 
 //when letter is clicked the letter shows on screen or guess is counted wrong
-
 $('.letters').on('click', function(){
-	letterGuessed();
-	checkIfWon();
+	var letter = $(this).data('letter');
+	// alert('working');
+	// letterGuessed();
+	// checkIfWon();
 	});
 
-//guess whole word
+// //guess whole word/phrase
  $('#solve').on('click', function(){
  	prompt('enter guess');
- 	if (answer === solvePuzzle()){
+ 	if (guess === solvePuzzle()){
  		checkIfWon();
  	} else {
  		subMoney();
@@ -27,42 +39,45 @@ $('.letters').on('click', function(){
  })
 
 
-//if they win fade in 
-// <img src="img/winner.jpg" alt="">
+
 
 
 //buy a vowel should pop up a modal with list of vowels to buy
 
 class Game {
 	constructor(){
-		this.abcArray = [];
+		this.phraseArr = phraseArr;
 		this.phrases = ['Happy', 'Disney', 'monkey'];
+    	this.phrase = this.phraseArr[0].split('');
 		this.correctLetter = [];
+		// this.letter = data-letter;
+		// this.box = data-box;
 	}
 
 //this pushes letters to the abc array when clicked
-	abcArray(){
-		this.abcArray = $('letters');
-	}
+	// abcArray(){
+	// 	this.abcArray = $('letters');
+	// }
 
 	startGame(phrases){
-		this.background = $('#innerText_top').css("background", "white");
+		var letterBox = $(this).data('box');//get data name
+		this.background = $('letterBox').css("background", "white");
 		wordSelector();
 	}
 //randomly selects words and changes background in innerText div
 	wordSelector(phrases){
 		this.phrases = phrases[(int) (Math.random() * phrases.length)];
-		
-// 		private static String[] names = { "Terminator", "Slicer","Ninja", "cow", "Robot", "littlegirl" };
-// name = names[(int) (Math.random() * names.length)];
-// System.out.println(name);
+		return this.phrases;
+		private static String[] names = { "Terminator", "Slicer","Ninja", "cow", "Robot", "littlegirl" };
+name = names[(int) (Math.random() * names.length)];
+System.out.println(name);
 	}
 
 	letterGuessed(){
-		this.correctLetter.push([]);
-		// var correct = $('.letters');
-		if('.letters' === this.phrases){
-			$('#innerText_top').html( 'phrases' + addMoney());
+		var letter = $(this).data('letter');//get data name
+		var letterBox = $(this).data('box');//get data name
+		if(this.phrases includes(letter)){
+			$(this.letterBox).html( this.correctLetter + addMoney());
 		} else {
 			alert('incorrect');
 			subMoney();
@@ -70,6 +85,7 @@ class Game {
 		$('.letters').click(function(){
 		  $('.letters').fadeOut();
 		});
+		
 	}
 
 	solvePuzzle(){
@@ -85,6 +101,8 @@ class Game {
 	      alert('incorrect');
 			subMoney();
    		 }	
+   		 //if they win fade in 
+		// <img src="img/winner.jpg" alt="">
 	}
 
 	//add money to their total
@@ -100,7 +118,7 @@ class Game {
 		this.phrases - subMoney;	
 		// minus that money from them
 
-}
+	}
 
 
 

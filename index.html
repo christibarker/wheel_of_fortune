@@ -1,10 +1,12 @@
-<!doctype html>
+=""<!doctype html>
 <html lang="en">
   <head>
     <title>WheelOfFortune</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="cookies.js"></script>
+
     <link rel="stylesheet" href="style/index.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -25,14 +27,14 @@
           <img id="player" class="one" src="img/player_one_icon.jpg" alt="">
         </div>
         <!-- /letters should appear in these grids/ -->
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
-        <div id="innerText_top" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
+        <div id="innerText_top" data-box="" class="col"></div>
 <!-- shows player two image -->
         <div class="col-2 ">
           <img id="player" class="one" src="img/player_two_icon.png" alt="">
@@ -46,14 +48,14 @@
           </div>
         </div>
         <!-- /letters should appear in these grids/ -->
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
-            <div id="innerText" class="col"></div>
+            <div id="innerText" data-box="" class="col"></div>
+            <div id="innerText" data-box=""  class="col"></div>
+            <div id="innerText" data-box=""  class="col"></div>
+            <div id="innerText" data-box=""  class="col"></div>
+            <div id="innerText" data-box=""  class="col"></div>
+            <div id="innerText" data-box=""  class="col"></div>
+            <div id="innerText" data-box=""  class="col"></div>
+            <div id="innerText" data-box="" class="col"></div>
 <!-- contains player two $ -->
         <div class="col-2 ">
             <div class="money_two">$</div>
@@ -66,33 +68,34 @@
           </div>
 <!-- contains letters in center grid-->
         <div class="col-8"><strong>Pick a letter</strong>
+<!-- add data type -->
           <div id="abc">
-            <div class="letters">A</div>
-            <div class="letters">B</div>
-            <div class="letters">C</div>
-            <div class="letters">D</div>
-            <div class="letters">E</div>
-            <div class="letters">F</div>
-            <div class="letters">G</div>
-            <div class="letters">H</div>
-            <div class="letters">I</div>
-            <div class="letters">J</div>
-            <div class="letters">K</div>
-            <div class="letters">L</div>
-            <div class="letters">M</div>
-            <div class="letters">N</div>
-            <div class="letters">O</div>
-            <div class="letters">P</div>
-            <div class="letters">Q</div>
-            <div class="letters">R</div>
-            <div class="letters">S</div>
-            <div class="letters">T</div>
-            <div class="letters">U</div>
-            <div class="letters">V</div>
-            <div class="letters">W</div>
-            <div class="letters">X</div>
-            <div class="letters">Y</div>
-            <div class="letters">Z</div>
+            <div data-letter="" class="letters">A</div>
+            <div data-letter="" class="letters">B</div>
+            <div data-letter="" class="letters">C</div>
+            <div data-letter="" class="letters">D</div>
+            <div data-letter="" class="letters">E</div>
+            <div data-letter="" class="letters">F</div>
+            <div data-letter="" class="letters">G</div>
+            <div data-letter="" class="letters">H</div>
+            <div data-letter="" class="letters">I</div>
+            <div data-letter="" class="letters">J</div>
+            <div data-letter="" class="letters">K</div>
+            <div data-letter="" class="letters">L</div>
+            <div data-letter="" class="letters">M</div>
+            <div data-letter="" class="letters">N</div>
+            <div data-letter="" class="letters">O</div>
+            <div data-letter="" class="letters">P</div>
+            <div data-letter="" class="letters">Q</div>
+            <div data-letter="" class="letters">R</div>
+            <div data-letter="" class="letters">S</div>
+            <div data-letter="" class="letters">T</div>
+            <div data-letter="" class="letters">U</div>
+            <div data-letter="" class="letters">V</div>
+            <div data-letter="" class="letters">W</div>
+            <div data-letter="" class="letters">X</div>
+            <div data-letter="" class="letters">Y</div>
+            <div id="z" data-letter="" class="letters">Z</div>
           </div>
         </div>
           <div class="col-2">
@@ -140,5 +143,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+   <script src="index.js"></script>
   </body>
 </html>
