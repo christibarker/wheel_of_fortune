@@ -6,6 +6,10 @@ body {
 	margin-top: 4%;
 }
 
+#innerText {
+	
+}
+
 #player {
 	position: relative;
 	text-align: center;
@@ -21,7 +25,7 @@ body {
 	height:150px;
 	width: 200px;
 	text-align: center;
-	background-color: lightgreen;
+	background: lightgreen;
 	border: solid;
 	border-color: gray;
 };
