@@ -18,7 +18,7 @@ $('.letters').on('click', function(){
 //guess whole word
  $('#solve').on('click', function(){
  	prompt('enter guess');
- 	if (answer === checkIfWon()){
+ 	if (answer === solvePuzzle()){
  		checkIfWon();
  	} else {
  		subMoney();
@@ -59,7 +59,6 @@ class Game {
 	}
 
 	letterGuessed(){
-		
 		this.correctLetter.push([]);
 		// var correct = $('.letters');
 		if('.letters' === this.phrases){
@@ -68,16 +67,24 @@ class Game {
 			alert('incorrect');
 			subMoney();
 		}
-
+		$('.letters').click(function(){
+		  $('.letters').fadeOut();
+		});
 	}
 
 	solvePuzzle(){
-		this.wordSelector;
+		this.wordSelector + abcArray;
 
 	}
 
 	checkIfWon(){
-		$('#win_lose').html('you won' + '$500 bonus' + addMoney());
+		if (this.correctLetter.length == this.wordSelector.length) {
+      		$('#win_lose').html('you won' + '$500 bonus' + addMoney());
+    	} else {
+	      this.letterGuessed();
+	      alert('incorrect');
+			subMoney();
+   		 }	
 	}
 
 	//add money to their total
