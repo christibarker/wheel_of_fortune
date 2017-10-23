@@ -13,12 +13,17 @@ body {
 	margin-top: 11%;
 }
 
+#player:hover {
+	box-shadow: 0 0 30px black;
+}
+
 .col {
 	height:150px;
 	width: 200px;
 	text-align: center;
 	background-color: lightgreen;
 	border: solid;
+	border-color: gray;
 };
 
 .col-3 {
