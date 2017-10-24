@@ -24,6 +24,7 @@ body {
 	background: lightgreen;
 	border: solid;
 	border-color: gray;
+	font-size: 5em;
 };
 
 .col-3 {

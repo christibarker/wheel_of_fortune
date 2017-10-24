@@ -27,7 +27,7 @@ $(function(){
 			$('letter').fadeOut('slow');
 			console.log(letter);
 			newGame.letterGuessed(letter);
-			// newGame.checkIfWon();
+			newGame.checkIfWon();
 			});
 
 		// //guess whole word/phrase
@@ -35,10 +35,7 @@ $(function(){
 		 	prompt('enter guess');
 		 	if (guess === solvePuzzle()){
 		 		checkIfWon();
-		 	} else {
-		 		subMoney();
-		 		alert('incorrect, you lose $200')
-		 	}
+		 	} 
 		 })
 
 });
@@ -55,109 +52,97 @@ class Game {
 	}
 
 //this pushes letters to the correctLetter array when clicked
-	correctLetter(){
-		this.phrase
-		this.correctLetter = this.correctLetter.push([]) === this.letterGuessed;
-	}
+	// correctLetter(){
+	// 	this.phrase
+	// 	this.correctLetter = this.correctLetter.push([]) === this.letterGuessed;
+	// }
 
 //randomly selects words and changes background in innerText div
 	startGame(){
 		// console.log('startGame!')
 		var offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
 
-		this.phrases = this.phrases[Math.floor(Math.random() * this.phrases.length)]
+		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)]
 
 		//this need to display white boxes for the amount of letters in word
 		for (var i = offset; i < (offset + this.phrase.length); i++) {
 			// console.log('#t_' + i)
-			$('#t_' + i).css({"background": "white"});
+			$('#t_' + i).css({"background": "white"})
+			$('#t_' + i).data('box', this.phrase[i]);
+			// .data('box', this.phrase[i]);
 		};
 	}
-
 
 	letterGuessed(letter){
 		// // guess letter if correct/ else alert incorrect
 
-		for (var i = letter; i < letter + (letter.length); i++);
-			console.log(letter)
 		//adds letter to board	
-		$('#t_1').text(letter);
-		// var inWord = false;
+		// $('#t_1').text(letter);
+
+		var inWord = false;
 		
-		// if(this.phrase includes($(this).data('letter'))){
-		// 	if($(this).data('letter') === letter(inWord = true);
+		if(this.phrase.includes(letter)){
+			$('.letter_box').each(function(){
+				if(letter === $(this).data('box')){
+							$('.letter_box').html(letter);
+				}
+			});
+		};
+	}
 
-		// 	$('#t_' + i).html(this.correctLetter);
+	checkIfWon(letter){
+		if(letter === this.phrase){
+			alert('you win');
+		}
+	}
 
-		// 	// addMoney();
-		// } else {
-		// 	alert('incorrect');
-		// 	// subMoney();
+}//ends Game
+
+		
+	solvePuzzle(){
+		
+
+	}
+
+			// checkIfWon(letter){
+			// 	if (this.correctLetter.length == this.wordSelector.length) {
+		 //      		$('#win_lose').html('you won' + '$500 bonus' + addMoney());
+		 //    	} else {
+			//       this.letterGuessed();
+			//       alert('incorrect');
+			// 		subMoney();
+		 //   		 }	
+		 //   		 //if they win fade in 
+			// 	// <img src="img/winner.jpg" alt="">
+			// }
+
+		//add money to their total
+		// addMoney(){
+		// 	var addMoney = ('letter' * parseInt(300));
+		// 	this.phrases + addMoney;
+			
+		// }
+
+	//subtract money from their total
+		// subMoney(){
+		// 	var subMoney = ('letter' - parseInt(200));
+		// 	this.phrases - subMoney;	
+		// 	// minus that money from them
+
 		// }
 
 
-		//var word = false;
-		// get letter
-		// loop through data-letter
-		// if not letter blank
-		// 	if data-letter word=true;
-		// 
-
-
-
-		// if(this.phrase includes(this.letter)){
-		// 	$('#t_' + i).html(this.correctLetter);
-		// 	addMoney();
-		// } else {
-		// 	alert('incorrect');
-		// 	subMoney();
-		// }
-	};
-
-	// solvePuzzle(){
+		// function updateTotals() {
 		
+		// 	var add = parseInt(Cookies.get('addMoney'));
+		// 	var subtract = parseInt(Cookies.get('subtract'));
 
-	// }
+		// 	var totalMoney = add + totalSugar + totalLemon;
 
-	// checkIfWon(){
-	// 	if (this.correctLetter.length == this.wordSelector.length) {
- //      		$('#win_lose').html('you won' + '$500 bonus' + addMoney());
- //    	} else {
-	//       this.letterGuessed();
-	//       alert('incorrect');
-	// 		subMoney();
- //   		 }	
- //   		 //if they win fade in 
-	// 	// <img src="img/winner.jpg" alt="">
-	// }
-
-	//add money to their total
-	// addMoney(){
-	// 	var addMoney = ('letter' * parseInt(300));
-	// 	this.phrases + addMoney;
-		
-	// }
-
-//subtract money from their total
-	// subMoney(){
-	// 	var subMoney = ('letter' - parseInt(200));
-	// 	this.phrases - subMoney;	
-	// 	// minus that money from them
-
-	// }
-
-
-	// function updateTotals() {
-	
-	// 	var add = parseInt(Cookies.get('addMoney'));
-	// 	var subtract = parseInt(Cookies.get('subtract'));
-
-	// 	var totalMoney = add + totalSugar + totalLemon;
-
-	// 	$('.money').html(totalMoney + '$');
-		
-	// 	return totalMoney;
-	};
+		// 	$('.money').html(totalMoney + '$');
+			
+		// 	return totalMoney;
+		// };
 
 
 
