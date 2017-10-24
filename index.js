@@ -46,45 +46,41 @@ $(function(){
 class Game {
 	constructor(){
 		this.phrases = ['Happy', 'Disney', 'monkey'];
-    this.phrase = this.phrases[0].split('');//splits words into letters
 		this.correctLetter = [''];
 		this.boardWidth = 8;
+		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
+		this.splitPhrase = this.phrase.split('');//splits words into letters
 	}
-
-//this pushes letters to the correctLetter array when clicked
-	// correctLetter(){
-	// 	this.phrase
-	// 	this.correctLetter = this.correctLetter.push([]) === this.letterGuessed;
-	// }
 
 //randomly selects words and changes background in innerText div
 	startGame(){
 		// console.log('startGame!')
 		var offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
 
-		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)]
-
 		//this need to display white boxes for the amount of letters in word
-		for (var i = offset; i < (offset + this.phrase.length); i++) {
+		for (var i = offset; i < (offset + this.splitPhrase.length); i++) {
 			// console.log('#t_' + i)
-			$('#t_' + i).css({"background": "white"})
-			$('#t_' + i).data('box', this.phrase[i]);
-			// .data('box', this.phrase[i]);
+			$('#t_' + i).css({"background": "white"}).data('box', this.splitPhrase[i - 1]);
+			// .text(this.splitPhrase[i - 1]);
 		};
 	}
 
 	letterGuessed(letter){
 		// // guess letter if correct/ else alert incorrect
 
-		//adds letter to board	
-		// $('#t_1').text(letter);
-
+		//adds letter to board
+		// for (var i = this.splitPhrase; i < (this.splitPhrase.length); i++){
+		// $('#t_').html(letter);
+	// }
 		var inWord = false;
+		var box = $(this).data('box');
 		
-		if(this.phrase.includes(letter)){
-			$('.letter_box').each(function(){
-				if(letter === $(this).data('box')){
-							$('.letter_box').html(letter);
+		if(this.splitPhrase.includes(letter)){
+			$('box').each(function(){
+				if(letter === box){
+					inWord = true;
+					$('box').text(letter);
+							console.log(letter)
 				}
 			});
 		};
@@ -99,10 +95,10 @@ class Game {
 }//ends Game
 
 		
-	solvePuzzle(){
+	// solvePuzzle(){
 		
 
-	}
+	// }
 
 			// checkIfWon(letter){
 			// 	if (this.correctLetter.length == this.wordSelector.length) {
