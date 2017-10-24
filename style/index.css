@@ -2,13 +2,9 @@ body {
 	background-color: gray;
 }
 
-#innerText_top{
+/*.top{
 	margin-top: 4%;
-}
-
-#innerText {
-	
-}
+}*/
 
 #player {
 	position: relative;
@@ -17,7 +13,7 @@ body {
 	margin-top: 11%;
 }
 
-#player:hover {
+.one:hover {
 	box-shadow: 0 0 30px black;
 }
 
@@ -28,6 +24,7 @@ body {
 	background: lightgreen;
 	border: solid;
 	border-color: gray;
+	font-size: 5em;
 };
 
 .col-3 {
