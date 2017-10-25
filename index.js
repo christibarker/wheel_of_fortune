@@ -10,15 +10,16 @@ $(function(){
 // 	}
 
 	var newGame = new Game();
+	// var secondGame = new Game;
 
 	//click on and new word is generated, background to display word changes color
 		$('#player').on('click', function(){
 			newGame.startGame();
-		})
+		});
 
 		$('#player_t').on('click', function(){
 			newGame.startGame();
-		})
+		});
 
 
 	//when letter is clicked the letter shows on screen or guess is counted wrong
@@ -32,20 +33,23 @@ $(function(){
 
 		// //guess whole word/phrase
 		 $('#solve').on('click', function(){
-		 	prompt('enter guess');
-		 	if (guess === solvePuzzle()){
+		 		prompt('enter guess');
 		 		checkIfWon();
-		 	} 
-		 })
+				if(true) {
+					alert('you won');
+				} else {
+					alert('try guessing another letter')
+				}
+		 });
 
 });
-//buy a vowel should pop up a modal with list of vowels to buy
 
+//buy a vowel should pop up a modal with list of vowels to buy
 
 
 class Game {
 	constructor(){
-		this.phrases = ['Happy', 'Disney', 'monkey'];
+		this.phrases = ['happy', 'disney', 'monkey', 'daisy', 'mouse'];
 		this.correctLetter = [''];
 		this.boardWidth = 8;
 		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
@@ -60,7 +64,7 @@ class Game {
 		//this need to display white boxes for the amount of letters in word
 		for (var i = offset; i < (offset + this.splitPhrase.length); i++) {
 			// console.log('#t_' + i)
-			$('#t_' + i).css({"background": "white"}).data('box', this.splitPhrase[i - 1]);
+			$('#t_' + i).css({"background": "white"}).attr('data-letter', this.splitPhrase[i - 1]);
 			// .text(this.splitPhrase[i - 1]);
 		};
 	}
@@ -70,35 +74,41 @@ class Game {
 
 		//adds letter to board
 		// for (var i = this.splitPhrase; i < (this.splitPhrase.length); i++){
-		// $('#t_').html(letter);
+		// $('.letter_box').html(letter);
 	// }
 		var inWord = false;
-		var box = $(this).data('box');
-		
-		if(this.splitPhrase.includes(letter)){
-			$('box').each(function(){
-				if(letter === box){
-					inWord = true;
-					$('box').text(letter);
-							console.log(letter)
-				}
-			});
-		};
-	}
 
-	checkIfWon(letter){
-		if(letter === this.phrase){
+		for(var i = $('.letter_box'); i < ($('.letter_box').length); i++);
+			console.log(letter);
+		// if(this.splitPhrase.includes(letter)){
+		// 		if(letter === (data-letter)){
+		// 			inWord = true;
+		// 			$('.letter_box').text(letter);
+		// 					console.log(letter)
+		// 		};
+		// 	};
+	};
+
+	checkIfWon(){
+		if(this.letterGuessed === this.phrases){
 			alert('you win');
 		}
 	}
 
+		// solvePuzzle(){
+		// 	prompt('enter guess');
+		// 		if(this.checkIfWon()) {
+		// 			alert('you won');
+		// 		} else {
+		// 			alert('try guessing another letter')
+		// 		}
+
+	// }
+
 }//ends Game
 
 		
-	// solvePuzzle(){
-		
 
-	// }
 
 			// checkIfWon(letter){
 			// 	if (this.correctLetter.length == this.wordSelector.length) {
