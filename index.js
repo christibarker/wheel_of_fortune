@@ -43,7 +43,7 @@ $(function(){
 
 class Game {
 	constructor(){
-		this.phrases = ['happy', 'disney', 'monkey', 'daisy', 'mouse'];
+		this.phrases = ['happy', 'disney', 'sneezy', 'daisy', 'mouse'];
 		this.boardWidth = 8;
 		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
 		this.splitPhrase = this.phrase.split('');//splits words into letters

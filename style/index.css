@@ -1,10 +1,16 @@
 body {
-	background-color: gray;
+	background: url(img/disneyworld.jpg);
 }
 
 #win_lose img{
 	height:200px;
 	width: 200px;
+}
+
+p {
+	text-align: center;
+	font-size: 4em;
+	font-family: cursive;
 }
 
 #player {
