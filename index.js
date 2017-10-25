@@ -10,17 +10,14 @@ $(function(){
 // 	}
 
 	var newGame = new Game();
-	// var secondGame = new Game;
+	var secondGame = new Game();
 
 	//click on and new word is generated, background to display word changes color
+		
+//purple player
 		$('#player').on('click', function(){
 			newGame.startGame();
 		});
-
-		$('#player_t').on('click', function(){
-			newGame.startGame();
-		});
-
 
 	//when letter is clicked the letter shows on screen or guess is counted wrong
 		$('.letters').on('click', function(){
@@ -34,6 +31,23 @@ $(function(){
 		// //guess whole word/phrase
 		 $('#solve').on('click', function(){
 		 		newGame.solvePuzzle();
+		 });
+
+//blue player
+		 	$('#player_t').on('click', function(){
+			secondGame.startGame();
+		});
+
+		 $('.letters').on('click', function(){
+			var letter = $(this).data('letter');
+			$('#' + letter.toUpperCase()).fadeOut('slow');
+			// console.log(letter);
+			newGame.letterGuessed(letter);
+			newGame.checkIfWon();
+			});
+
+		  $('#solve_t').on('click', function(){
+		 		secondGame.solvePuzzle();
 		 });
 
 });
