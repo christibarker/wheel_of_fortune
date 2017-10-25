@@ -10,107 +10,102 @@ $(function(){
 // 	}
 
 	var newGame = new Game();
+	// var secondGame = new Game;
 
 	//click on and new word is generated, background to display word changes color
 		$('#player').on('click', function(){
 			newGame.startGame();
-		})
+		});
 
 		$('#player_t').on('click', function(){
 			newGame.startGame();
-		})
+		});
 
 
 	//when letter is clicked the letter shows on screen or guess is counted wrong
 		$('.letters').on('click', function(){
 			var letter = $(this).data('letter');
-			$('letter').fadeOut('slow');
-			console.log(letter);
+			$('#' + letter.toUpperCase()).fadeOut('slow');
+			// console.log(letter);
 			newGame.letterGuessed(letter);
 			newGame.checkIfWon();
 			});
 
 		// //guess whole word/phrase
 		 $('#solve').on('click', function(){
-		 	prompt('enter guess');
-		 	if (guess === solvePuzzle()){
-		 		checkIfWon();
-		 	} 
-		 })
+		 		newGame.solvePuzzle();
+		 });
 
 });
-//buy a vowel should pop up a modal with list of vowels to buy
 
+//buy a vowel should pop up a modal with list of vowels to buy
 
 
 class Game {
 	constructor(){
-		this.phrases = ['Happy', 'Disney', 'monkey'];
-		this.correctLetter = [''];
+		this.phrases = ['happy', 'disney', 'monkey', 'daisy', 'mouse'];
 		this.boardWidth = 8;
 		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
 		this.splitPhrase = this.phrase.split('');//splits words into letters
+		this.guessedLetters = this.splitPhrase;	
+		this.offset = 0;
 	}
 
 //randomly selects words and changes background in innerText div
-	startGame(){
-		// console.log('startGame!')
-		var offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
+		startGame(){
+			// console.log('startGame!')
+			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
 
-		//this need to display white boxes for the amount of letters in word
-		for (var i = offset; i < (offset + this.splitPhrase.length); i++) {
-			// console.log('#t_' + i)
-			$('#t_' + i).css({"background": "white"}).data('box', this.splitPhrase[i - 1]);
-			// .text(this.splitPhrase[i - 1]);
-		};
-	}
-
-	letterGuessed(letter){
-		// // guess letter if correct/ else alert incorrect
-
-		//adds letter to board
-		// for (var i = this.splitPhrase; i < (this.splitPhrase.length); i++){
-		// $('#t_').html(letter);
-	// }
-		var inWord = false;
-		var box = $(this).data('box');
-		
-		if(this.splitPhrase.includes(letter)){
-			$('box').each(function(){
-				if(letter === box){
-					inWord = true;
-					$('box').text(letter);
-							console.log(letter)
-				}
-			});
-		};
-	}
-
-	checkIfWon(letter){
-		if(letter === this.phrase){
-			alert('you win');
+			//this need to display white boxes for the amount of letters in word
+			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
+				// console.log('#t_' + i)
+				$('#t_' + i).css({"background": "white"}).attr('data-letter', this.splitPhrase[i - 1]);
+				// .text(this.splitPhrase[i - 1]);
+			};
 		}
+
+		letterGuessed(letter){
+			// // guess letter if correct/ else alert incorrect
+			//adds letter to board
+			for (var i = 0; i < (this.splitPhrase.length); i++) {
+				if (this.splitPhrase[i].toUpperCase() === letter.toUpperCase()) {
+					this.guessedLetters[i] = '';
+				  $('#t_' + (i + this.offset)).text(letter);
+				};
+			};
+		};
+
+		checkIfWon(){
+			var hasWon = true;
+			for (var i = 0; i < this.guessedLetters.length; i ++) {
+				if (this.guessedLetters[i] != '') {
+					hasWon = false;
+					return;
+				};
+			};
+
+			if(hasWon === true){
+				$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+			};
+		};
+
+		solvePuzzle(){
+			var guess = prompt('enter guess', '');
+			if (guess != '') {
+				if (guess.toUpperCase() === this.phrase.toUpperCase()) {
+					$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+				} else {
+					alert('you lost');
+				}
+			};
 	}
 
 }//ends Game
 
 		
-	// solvePuzzle(){
-		
 
-	// }
 
-			// checkIfWon(letter){
-			// 	if (this.correctLetter.length == this.wordSelector.length) {
-		 //      		$('#win_lose').html('you won' + '$500 bonus' + addMoney());
-		 //    	} else {
-			//       this.letterGuessed();
-			//       alert('incorrect');
-			// 		subMoney();
-		 //   		 }	
-		 //   		 //if they win fade in 
-			// 	// <img src="img/winner.jpg" alt="">
-			// }
+///add money features
 
 		//add money to their total
 		// addMoney(){

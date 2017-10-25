@@ -2,9 +2,10 @@ body {
 	background-color: gray;
 }
 
-/*.top{
-	margin-top: 4%;
-}*/
+#win_lose img{
+	height:200px;
+	width: 200px;
+}
 
 #player {
 	position: relative;
@@ -15,6 +16,14 @@ body {
 
 .one:hover {
 	box-shadow: 0 0 30px black;
+}
+
+.letter_box{
+	margin-top: 4%;
+}
+
+.left_button{
+	margin-left: 50px;
 }
 
 .col {
@@ -67,7 +76,7 @@ body {
 
 #abc {
 	position: relative;
-    margin-top: 3%;
+    /*margin-top: 3%;*/
 }
 
 .letters { 
