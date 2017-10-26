@@ -26,6 +26,8 @@ $(function(){
 			// console.log(letter);
 			newGame.letterGuessed(letter);
 			newGame.checkIfWon();
+			newGame.newRound()
+
 			});
 
 		// //guess whole word/phrase
@@ -42,8 +44,9 @@ $(function(){
 			var letter = $(this).data('letter');
 			$('#' + letter.toUpperCase()).fadeOut('slow');
 			// console.log(letter);
-			newGame.letterGuessed(letter);
-			newGame.checkIfWon();
+			secondGame.letterGuessed(letter);
+			secondGame.checkIfWon();
+			secondGame.newRound()
 			});
 
 		  $('#solve_t').on('click', function(){
@@ -113,6 +116,18 @@ class Game {
 				}
 			};
 	}
+
+		newRound(){
+			// console.log('startGame!')
+			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
+
+			//this need to display white boxes for the amount of letters in word
+			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
+				// console.log('#t_' + i)
+				$('#t_' + i).css({"background": "white"}).attr('data-letter', this.splitPhrase[i - 1]);
+				// .text(this.splitPhrase[i - 1]);
+			};
+		}
 
 }//ends Game
 
