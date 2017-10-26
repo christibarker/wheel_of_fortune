@@ -82,7 +82,7 @@ class Game {
 //randomly selects words and changes background in innerText div
 		startGame(){
 			// console.log('startGame!')
-			this.phrase = this.phrases.word[Math.floor(Math.random() * this.phrases.word.length)];
+			this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)].word;
 			this.splitPhrase = this.phrase.split('');//splits words into letters
 			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
 			this.guessedLetters = this.splitPhrase;
