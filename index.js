@@ -15,7 +15,7 @@ $(function(){
 	//click on and new word is generated, background to display word changes color
 		
 //purple player
-		$('#player').on('click', function(){
+		$('#player_t').on('click', function(){
 			newGame.startGame();
 		});
 
@@ -29,16 +29,16 @@ $(function(){
 			});
 
 		// //guess whole word/phrase
-		 $('#solve').on('click', function(){
+		 $('#solve_t').on('click', function(){
 		 		newGame.solvePuzzle();
 		 });
 
-		 $('#next_round').on('click', function(){
+		 $('#next_round_t').on('click', function(){
 			newGame.newRound()
 		});
 
 //blue player
-		 	$('#player_t').on('click', function(){
+		 	$('#player').on('click', function(){
 			secondGame.startGame();
 		});
 
@@ -50,13 +50,12 @@ $(function(){
 			secondGame.checkIfWon();
 			});
 
-		  $('#solve_t').on('click', function(){
+		  $('#solve').on('click', function(){
 		 		secondGame.solvePuzzle();
 		 });
 
-		  $('#player_t').on('click', function(){
-		  	secondGame.startGame();
-			// secondGame.newRound()
+		  $('#next_round').on('click', function(){
+			newGame.newRound()
 		});
 
 });
@@ -112,7 +111,7 @@ class Game {
 			};
 
 			if(hasWon === true){
-				$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+				$('#win_lose img').show();
 
 			};
 		};
@@ -121,7 +120,7 @@ class Game {
 			var guess = prompt('enter guess', '');
 			if (guess != '') {
 				if (guess.toUpperCase() === this.phrase.toUpperCase()) {
-					$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+					$('#win_lose img').show();
 				} else {
 					alert('you lost');
 				}
