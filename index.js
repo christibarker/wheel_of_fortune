@@ -35,6 +35,7 @@ $(function(){
 
 		 $('#next_round_t').on('click', function(){
 			newGame.newRound()
+			$('.letters').fadeIn('slow');
 		});
 
 //blue player
@@ -42,13 +43,13 @@ $(function(){
 			secondGame.startGame();
 		});
 
-		 $('.letters').on('click', function(){
-			var letter = $(this).data('letter');
-			$('#' + letter.toUpperCase()).fadeOut('slow');
-			// console.log(letter);
-			secondGame.letterGuessed(letter);
-			secondGame.checkIfWon();
-			});
+		 // $('.letters').on('click', function(){
+			// var letter = $(this).data('letter');
+			// $('#' + letter.toUpperCase()).fadeOut('slow');
+			// // console.log(letter);
+			// secondGame.letterGuessed(letter);
+			// secondGame.checkIfWon();
+			// });
 
 		  $('#solve').on('click', function(){
 		 		secondGame.solvePuzzle();
@@ -65,22 +66,30 @@ $(function(){
 
 class Game {
 	constructor(){
-		this.phrases = ['happy', 'disney', 'sneezy', 'daisy', 'mouse'];
+		this.phrases = [
+				{word:'happy', hint: 'smile '},
+			 	{word:'disney', hint: 'favorite for kids'},
+				{word:'sneezy', hint: 'bless you'},
+				{word:'daisy', hint: 'also a flower'}, 
+				{word:'mouse', hint: 'elephants dislike'}];
 		this.boardWidth = 8;
-		this.guessedLetters = this.splitPhrase;	
+		this.guessedLetters = [];	
 		this.offset = 0;
 	}
+
+
 
 //randomly selects words and changes background in innerText div
 		startGame(){
 			// console.log('startGame!')
-			this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
+			this.phrase = this.phrases.word[Math.floor(Math.random() * this.phrases.word.length)];
 			this.splitPhrase = this.phrase.split('');//splits words into letters
 			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
+			this.guessedLetters = this.splitPhrase;
 
 
 			for (var i = 0; i < this.boardWidth; i++) {
-				$('#t_' + i).css({"background": "lightgreen"}).attr('data-letter', '');
+				$('#t_' + i).css({"background": "lightgreen"}).attr('data-letter', '').text('');
 			};
 			//this need to display white boxes for the amount of letters in word
 			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
@@ -93,7 +102,7 @@ class Game {
 		letterGuessed(letter){
 			// // guess letter if correct/ else alert incorrect
 			//adds letter to board
-			for (var i = 0; i < (this.splitPhrase.length); i++) {
+			for (var i = 0; i < this.splitPhrase.length; i++) {
 				if (this.splitPhrase[i].toUpperCase() === letter.toUpperCase()) {
 					this.guessedLetters[i] = '';
 				  $('#t_' + (i + this.offset)).text(letter);
