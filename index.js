@@ -26,14 +26,16 @@ $(function(){
 			// console.log(letter);
 			newGame.letterGuessed(letter);
 			newGame.checkIfWon();
-			newGame.newRound()
-
 			});
 
 		// //guess whole word/phrase
 		 $('#solve').on('click', function(){
 		 		newGame.solvePuzzle();
 		 });
+
+		 $('#next_round').on('click', function(){
+			newGame.newRound()
+		});
 
 //blue player
 		 	$('#player_t').on('click', function(){
@@ -46,12 +48,16 @@ $(function(){
 			// console.log(letter);
 			secondGame.letterGuessed(letter);
 			secondGame.checkIfWon();
-			secondGame.newRound()
 			});
 
 		  $('#solve_t').on('click', function(){
 		 		secondGame.solvePuzzle();
 		 });
+
+		  $('#player_t').on('click', function(){
+		  	secondGame.startGame();
+			// secondGame.newRound()
+		});
 
 });
 
@@ -62,8 +68,6 @@ class Game {
 	constructor(){
 		this.phrases = ['happy', 'disney', 'sneezy', 'daisy', 'mouse'];
 		this.boardWidth = 8;
-		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
-		this.splitPhrase = this.phrase.split('');//splits words into letters
 		this.guessedLetters = this.splitPhrase;	
 		this.offset = 0;
 	}
@@ -71,8 +75,14 @@ class Game {
 //randomly selects words and changes background in innerText div
 		startGame(){
 			// console.log('startGame!')
+			this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
+			this.splitPhrase = this.phrase.split('');//splits words into letters
 			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
 
+
+			for (var i = 0; i < this.boardWidth; i++) {
+				$('#t_' + i).css({"background": "lightgreen"}).attr('data-letter', '');
+			};
 			//this need to display white boxes for the amount of letters in word
 			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
 				// console.log('#t_' + i)
@@ -103,6 +113,7 @@ class Game {
 
 			if(hasWon === true){
 				$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+
 			};
 		};
 
@@ -118,15 +129,7 @@ class Game {
 	}
 
 		newRound(){
-			// console.log('startGame!')
-			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
-
-			//this need to display white boxes for the amount of letters in word
-			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
-				// console.log('#t_' + i)
-				$('#t_' + i).css({"background": "white"}).attr('data-letter', this.splitPhrase[i - 1]);
-				// .text(this.splitPhrase[i - 1]);
-			};
+				this.startGame()
 		}
 
 }//ends Game
