@@ -89,8 +89,9 @@ class Game {
 
 			for (var i = 0; i < this.boardWidth; i++) {
 				$('#t_' + i).css({"background": "lightgreen"}).attr('data-letter', '').text('');
+				$('#hint').html('');
 			};
-			$('#hint').html('');
+
 			//this need to display white boxes for the amount of letters in word
 			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
 				// console.log('#t_' + i)
@@ -126,6 +127,7 @@ class Game {
 
 			if(hasWon === true){
 				$('#win_lose img').show();
+				$('#win_lose img').fadeOut(4000);
 
 			};
 		};
@@ -135,6 +137,7 @@ class Game {
 			if (guess != '') {
 				if (guess.toUpperCase() === this.phrase.toUpperCase()) {
 					$('#win_lose img').show();
+					$('#win_lose img').fadeOut(4000);
 				} else {
 					alert('you lost');
 				}
