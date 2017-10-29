@@ -57,6 +57,7 @@ $(function(){
 
 		  $('#next_round').on('click', function(){
 			newGame.newRound()
+			$('.letters').fadeIn('slow');
 		});
 
 });
@@ -77,8 +78,6 @@ class Game {
 		this.offset = 0;
 	}
 
-
-
 //randomly selects words and changes background in innerText div
 		startGame(){
 			// console.log('startGame!')
@@ -91,12 +90,18 @@ class Game {
 			for (var i = 0; i < this.boardWidth; i++) {
 				$('#t_' + i).css({"background": "lightgreen"}).attr('data-letter', '').text('');
 			};
+			$('#hint').html('');
 			//this need to display white boxes for the amount of letters in word
 			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
 				// console.log('#t_' + i)
 				$('#t_' + i).css({"background": "white"}).attr('data-letter', this.splitPhrase[i - 1]);
 				// .text(this.splitPhrase[i - 1]);
 			};
+			for (var i = 0; i < this.phrases.length; i++) {
+				if (this.phrases[i].word === this.phrase) {
+					$('#hint').html('HINT: ' + this.phrases[i].hint);
+				}
+			}
 		}
 
 		letterGuessed(letter){
