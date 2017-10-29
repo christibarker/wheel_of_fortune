@@ -15,7 +15,7 @@ $(function(){
 	//click on and new word is generated, background to display word changes color
 		
 //purple player
-		$('#player').on('click', function(){
+		$('#player_t').on('click', function(){
 			newGame.startGame();
 		});
 
@@ -29,26 +29,36 @@ $(function(){
 			});
 
 		// //guess whole word/phrase
-		 $('#solve').on('click', function(){
+		 $('#solve_t').on('click', function(){
 		 		newGame.solvePuzzle();
 		 });
 
+		 $('#next_round_t').on('click', function(){
+			newGame.newRound()
+			$('.letters').fadeIn('slow');
+		});
+
 //blue player
-		 	$('#player_t').on('click', function(){
+		 	$('#player').on('click', function(){
 			secondGame.startGame();
 		});
 
-		 $('.letters').on('click', function(){
-			var letter = $(this).data('letter');
-			$('#' + letter.toUpperCase()).fadeOut('slow');
-			// console.log(letter);
-			newGame.letterGuessed(letter);
-			newGame.checkIfWon();
-			});
+		 // $('.letters').on('click', function(){
+			// var letter = $(this).data('letter');
+			// $('#' + letter.toUpperCase()).fadeOut('slow');
+			// // console.log(letter);
+			// secondGame.letterGuessed(letter);
+			// secondGame.checkIfWon();
+			// });
 
-		  $('#solve_t').on('click', function(){
+		  $('#solve').on('click', function(){
 		 		secondGame.solvePuzzle();
 		 });
+
+		  $('#next_round').on('click', function(){
+			newGame.newRound()
+			$('.letters').fadeIn('slow');
+		});
 
 });
 
@@ -57,31 +67,47 @@ $(function(){
 
 class Game {
 	constructor(){
-		this.phrases = ['happy', 'disney', 'sneezy', 'daisy', 'mouse'];
+		this.phrases = [
+				{word:'happy', hint: 'smile '},
+			 	{word:'disney', hint: 'favorite for kids'},
+				{word:'sneezy', hint: 'bless you'},
+				{word:'daisy', hint: 'also a flower'}, 
+				{word:'mouse', hint: 'elephants dislike'}];
 		this.boardWidth = 8;
-		this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
-		this.splitPhrase = this.phrase.split('');//splits words into letters
-		this.guessedLetters = this.splitPhrase;	
+		this.guessedLetters = [];	
 		this.offset = 0;
 	}
 
 //randomly selects words and changes background in innerText div
 		startGame(){
 			// console.log('startGame!')
+			this.phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)].word;
+			this.splitPhrase = this.phrase.split('');//splits words into letters
 			this.offset = Math.floor((this.boardWidth - this.phrase.length) / 2);
+			this.guessedLetters = this.splitPhrase;
 
+
+			for (var i = 0; i < this.boardWidth; i++) {
+				$('#t_' + i).css({"background": "lightgreen"}).attr('data-letter', '').text('');
+			};
+			$('#hint').html('');
 			//this need to display white boxes for the amount of letters in word
 			for (var i = this.offset; i < (this.offset + this.splitPhrase.length); i++) {
 				// console.log('#t_' + i)
 				$('#t_' + i).css({"background": "white"}).attr('data-letter', this.splitPhrase[i - 1]);
 				// .text(this.splitPhrase[i - 1]);
 			};
+			for (var i = 0; i < this.phrases.length; i++) {
+				if (this.phrases[i].word === this.phrase) {
+					$('#hint').html('HINT: ' + this.phrases[i].hint);
+				}
+			}
 		}
 
 		letterGuessed(letter){
 			// // guess letter if correct/ else alert incorrect
 			//adds letter to board
-			for (var i = 0; i < (this.splitPhrase.length); i++) {
+			for (var i = 0; i < this.splitPhrase.length; i++) {
 				if (this.splitPhrase[i].toUpperCase() === letter.toUpperCase()) {
 					this.guessedLetters[i] = '';
 				  $('#t_' + (i + this.offset)).text(letter);
@@ -99,7 +125,8 @@ class Game {
 			};
 
 			if(hasWon === true){
-				$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+				$('#win_lose img').show();
+
 			};
 		};
 
@@ -107,12 +134,16 @@ class Game {
 			var guess = prompt('enter guess', '');
 			if (guess != '') {
 				if (guess.toUpperCase() === this.phrase.toUpperCase()) {
-					$('#win_lose').html(`<img src="img/winner.jpg"></img>`);
+					$('#win_lose img').show();
 				} else {
 					alert('you lost');
 				}
 			};
 	}
+
+		newRound(){
+				this.startGame()
+		}
 
 }//ends Game
 
